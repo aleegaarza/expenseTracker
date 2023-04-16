@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Header } from "./components/Header";
+import { Balance } from "./components/Balance";
+import { TransactionList } from "./components/TransactionList";
+import "./App.css";
+import { AddTransaction } from "./components/AddTransaction";
+import { GlobalProvider } from "./components/context/GlobalState";
 
 function App() {
+  // const [transactions, setTransactions] = useState([
+  //   {id: 1, text: 'comida', amount: -100},
+  //   {id: 1, text: 'salario', amount: +8000},
+  //   {id: 1, text: 'internet', amount: -500},
+  //   {id: 1, text: 'depósito', amount: +6700},
+  // ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalProvider>
+      <Header />
+      <div className="container">
+        <Balance />
+        <TransactionList />
+        <AddTransaction />
+      </div>
+    </GlobalProvider>
   );
 }
 
